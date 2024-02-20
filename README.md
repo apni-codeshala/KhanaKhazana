@@ -49,5 +49,18 @@ Two-way data binding allows bidirectional data flow, meaning that changes in the
 
     Controlled components are form elements whose values are controlled by the state. They maintain a consistent, bidirectional data flow between the UI components and the data models.
 
+![Image](https://handsontable.com/blog/wp-content/uploads/2023/04/image10.png)
+
 #### For full reference of one way and two way data binding in react [Click Here](https://handsontable.com/blog/understanding-data-binding-in-react)
+
+#### After wards focus on Advance data binding concepts in react
+    * Lifting State up
+
+    Lifting state up is a technique where the state is moved to a common ancestor component, enabling sibling components to share and synchronize data. This approach allows for better communication between components and promotes a unidirectional data flow.
+
+    * Compound components
+
+    Compound components are a technique to create more flexible and composable components by grouping multiple components together and managing their shared state.
+
+All data binding cocept is available inside referece with example
 
