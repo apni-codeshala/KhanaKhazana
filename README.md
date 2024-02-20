@@ -24,4 +24,30 @@ Let me explain, a key is the only thing React uses to identify DOM elements. Wha
 [For full explanation](https://robinpokorny.medium.com/index-as-a-key-is-an-anti-pattern-e0349aece318)
 
 
-# Tommorow start with one way data binding concept in React
+## One way data binding concept in React
+
+One-way means that the binding happens in one direction. In this case, changes in the data automatically update the UI, but changes in the UI do not automatically update the data. That’s why it is referred to as one-way data binding.
+
+React achieves one-way data binding by using state and props.
+
+    * Props
+
+    Props (short for properties) are the mechanism by which data is passed from a parent component to its children. They are read-only, meaning that child components cannot modify the data received from their parent components.
+
+    Now since the data is read-only, the child component can’t update it. This is one-way data binding.
+
+    * State
+
+    Components in React can have dynamic behavior by representing their internal data using state, which can be managed in both class and function components.
+
+
+## Two-way data binding
+
+Two-way data binding allows bidirectional data flow, meaning that changes in the UI automatically update the component’s state, and changes in the state automatically update the UI. In React, two-way data binding is achieved using controlled components.
+
+    * Controlled components
+
+    Controlled components are form elements whose values are controlled by the state. They maintain a consistent, bidirectional data flow between the UI components and the data models.
+
+#### For full reference of one way and two way data binding in react [Click Here](https://handsontable.com/blog/understanding-data-binding-in-react)
+

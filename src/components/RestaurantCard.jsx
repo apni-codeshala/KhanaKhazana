@@ -10,7 +10,7 @@ const RestaurantCard = ({ ...restaurant }) => {
     }
 
     return (
-        <section className="h-5/6 w-80 shadow-xl rounded-t-md rounded bg-purple-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer" style={{backgroundColor: '#d6cece'}}>
+        <section className=" w-80 shadow-xl rounded-t-md rounded bg-purple-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer" style={{backgroundColor: '#d6cece'}}>
             <img className="h-56 w-80 rounded-md" src={CLOUDINARY_URL + restaurant.cloudinaryImageId} alt="image" />
             <div className="space-x-1 flex justify-center mt-2">
                 <RatingStar rating={restaurant.avgRating} />
@@ -23,6 +23,7 @@ const RestaurantCard = ({ ...restaurant }) => {
                         return <Cuisines cuisine={cuisine} />
                     })
                 }
+                <button type="button"  class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-1xl font-bold px-5 py-0.5 text-center me-2  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">+</button>
             </div>
         </section>   
     )
