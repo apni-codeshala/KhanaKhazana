@@ -19,11 +19,11 @@ const RestaurantCard = ({ ...restaurant }) => {
             <h2 className="font-semibold mb-2">{restaurant.costForTwo + " - " + restaurant.sla.deliveryTime + " MIN"}</h2>
             <div className="px-6 pb-2 h-30">
                 {
-                    cuisines.map((cuisine, index) => {
+                    cuisines.map((cuisine) => {
                         return <Cuisines cuisine={cuisine} />
                     })
                 }
-                <button type="button"  class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-1xl font-bold px-5 py-0.5 text-center me-2  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">+</button>
+                <button type="button"  className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-1xl font-bold px-5 py-0.5 text-center me-2  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">+</button>
             </div>
         </section>   
     )
