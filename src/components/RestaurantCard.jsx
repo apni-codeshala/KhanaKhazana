@@ -3,10 +3,9 @@ import RatingStar from "./RatingStar.jsx";
 import { CLOUDINARY_URL } from "./constant.js";
 
 const RestaurantCard = ({ ...restaurant }) => {
-
     let cuisines = [];
     for(let i=0; i<2; i++){
-        cuisines.push(restaurant.cuisines[i]);
+        cuisines.push(restaurant?.cuisines[i]);
     }
 
     return (
