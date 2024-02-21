@@ -14,7 +14,7 @@
 
 export const CLOUDINARY_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_500,h_400/";
 
-export const restaurants =[
+export const restaurantList =[
     {
       "info": {
         "id": "17036",

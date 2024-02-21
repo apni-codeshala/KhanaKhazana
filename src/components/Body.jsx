@@ -1,9 +1,18 @@
 import { useState } from "react";
 import RestaurantCard from "./RestaurantCard";
-import { restaurants } from "./constant.js";
+import { restaurantList } from "./constant.js";
 
 const Body = () => {
-    let [searchText, setSearchText] = useState('');
+    const [restaurants, setRestaurants] = useState(restaurantList);
+    const [searchText, setSearchText] = useState('');
+
+    function filterData(searchText, restaurants){
+        const filteredData = restaurants.filter((restaurant) => {
+            return restaurant.info.name.includes(searchText);
+        });
+        return filteredData;
+    }
+
     return (
         <div style={{ backgroundColor: '#3d3d3d' }}>
             <form className="max-w-md mx-auto pt-20">
@@ -24,9 +33,18 @@ const Body = () => {
                         onChange={(e) => {
                             setSearchText(e.target.value);
                         }}
-                    
                     />
-                    <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                    <button 
+                    type="submit" 
+                    className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    onClick={(e) => {
+                        // Need to filter the data
+                        const data = filterData(searchText, restaurants);
+                        // Update the state - restaurants
+                        setRestaurants(data);
+                        e.preventDefault();
+                    }}
+                    >Search</button>
                 </div>
             </form>
             <div className="flex flex-wrap justify-center gap-10 p-10">
