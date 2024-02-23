@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import BodyShimmer from "./BodyShimmer.jsx";
+import { Link } from "react-router-dom";
 
 const Body = () => {
     const [allRestaurants, setAllRestaurants] = useState([]);
@@ -74,7 +75,14 @@ const Body = () => {
                 <div className="flex flex-wrap justify-center gap-10 p-10">
                     {
                         filteredRestaurants.map((restaurant) => {
-                            return <RestaurantCard {...restaurant?.info} key={restaurant.id} />
+                            return (
+                                <Link 
+                                    to = {"/restaurant/" + restaurant.info.id}
+                                    key={restaurant.info.id}
+                                >
+                                    <RestaurantCard {...restaurant?.info} />
+                                </Link>
+                            )
                         })
                     }
                 </div>
@@ -105,7 +113,7 @@ const Body = () => {
                             className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             onClick={(e) => {
                                 // Need to filter the data
-                                const data = filterData(searchText, restaurants);
+                                const data = filterData(searchText, allRestaurants);
                                 // Update the state - restaurants
                                 setFilteredRestaurants(data);
                                 e.preventDefault();

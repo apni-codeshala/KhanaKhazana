@@ -64,4 +64,21 @@ Two-way data binding allows bidirectional data flow, meaning that changes in the
 
 All data binding cocept is available inside referece with example
 
-# Tommorow start learning config deiven UI concept.
+## Tommorow start learning config deiven UI concept.
+
+In a traditional world, data is driven by the backend and the UI is driven by each client (web, iOS, and Android). As an example, let’s take Airbnb’s listing page. To show our users a listing, we might request listing data from the backend. Upon receiving this listing data, the client transforms that data into UI.
+
+This comes with a few issues. First, there’s listing-specific logic built on each client to transform and render the listing data. This logic becomes complicated quickly and is inflexible if we make changes to how listings are displayed down the road.
+
+Second, each client has to maintain parity with each other. As mentioned, the logic for this screen gets complicated quickly and each client has their own intricacies and specific implementations for handling state, displaying UI, etc. It’s easy for clients to quickly diverge from one another.
+
+Finally, mobile has a versioning problem. Each time we need to add new features to our listing page, we need to release a new version of our mobile apps for users to get the latest experience. Until users update, we have few ways to determine if users are using or responding well to these new features.
+
+### The Case for System Driven UI
+
+What if clients didn’t need to know they were even displaying a listing? What if we could pass the UI directly to the client and skip the idea of listing data entirely? That’s essentially what SDUI does — we pass both the UI and the data together, and the client displays it agnostic of the data it contains.
+
+Airbnb’s specific SDUI implementation enables our backend to control the data and how that data is displayed across all clients at the same time. Everything from the screen’s layout, how sections are arranged in that layout, the data displayed in each section, and even the actions taken when users interact with sections is controlled by a single backend response across our web, iOS, and Android apps.
+
+For full understanding of system drviem UI [Click Here](https://medium.com/airbnb-engineering/a-deep-dive-into-airbnbs-server-driven-ui-system-842244c5f5)
+

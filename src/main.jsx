@@ -7,9 +7,10 @@ import Body from './components/Body.jsx';
 import About from './components/About.jsx';
 import Contact from './components/Contact.jsx';
 import Error from './components/Error.jsx';
+import Services from './components/Services.jsx';
+import RestaurantMenu from './components/RestaurantMenu.jsx';
 
 import './index.css'
-import Services from './components/Services.jsx';
 
 const appRouter = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />
+      },
+      {
+        path: "/restaurant/:id",
+        element: <RestaurantMenu />
       }
     ]
   },
