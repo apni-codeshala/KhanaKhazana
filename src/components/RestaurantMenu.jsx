@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import BodyShimmer from "./BodyShimmer";
 import RatingStar from "./RatingStar.jsx";
 import Cuisines from "./Cuisines.jsx";
+import RestaurantMenuCard from "./RestaurantMenuCard.jsx";
+import MenuHeaderShimmer from "./MenuHeaderShimmer.jsx";
 
 import { CLOUDINARY_URL } from "./constant.js";
-import RestaurantMenuCard from "./RestaurantMenuCard.jsx";
 
 const RestaurantMenu = () => {
 
@@ -27,7 +27,7 @@ const RestaurantMenu = () => {
         getRestaurantInfo();
     }, []);
 
-    return (!restaurant) ? <BodyShimmer /> : (
+    return (!restaurant) ? <MenuHeaderShimmer /> : (
         <div className="flex flex-col justify-center align-center" style={{ backgroundColor: '#3d3d3d' }}>
 
             <div className="w-full flex mt-20 py-10 px-28 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style={{ backgroundColor: '#3d3d3d' }}>
@@ -57,6 +57,7 @@ const RestaurantMenu = () => {
                     </div>
                 </div>
             </div>
+            
             {
                 menu.map((menu) => {
                     return <RestaurantMenuCard menu={menu}/>
