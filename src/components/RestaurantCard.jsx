@@ -9,7 +9,7 @@ const RestaurantCard = ({ ...restaurant }) => {
     }
 
     return (
-        <section className=" w-80 shadow-xl rounded-t-md rounded bg-purple-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer" style={{backgroundColor: '#d6cece'}}>
+        <section className="w-80 shadow-xl rounded-t-md rounded bg-purple-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer" style={{backgroundColor: '#d6cece'}}>
             <img className="h-56 w-80 rounded-md" src={CLOUDINARY_URL + restaurant.cloudinaryImageId} alt="image" />
             <div className="space-x-1 flex justify-center mt-2">
                 <RatingStar rating={restaurant.avgRating} />
