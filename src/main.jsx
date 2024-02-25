@@ -9,6 +9,7 @@ import Contact from './components/Contact.jsx';
 import Error from './components/Error.jsx';
 import Services from './components/Services.jsx';
 import RestaurantMenu from './components/RestaurantMenu.jsx';
+import Profile from './components/Profile.jsx';
 
 import './index.css'
 
@@ -24,7 +25,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: <About />
       },
       {
         path: "/services",

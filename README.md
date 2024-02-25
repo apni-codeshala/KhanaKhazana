@@ -82,3 +82,4 @@ Airbnb’s specific SDUI implementation enables our backend to control the data 
 
 For full understanding of system drviem UI [Click Here](https://medium.com/airbnb-engineering/a-deep-dive-into-airbnbs-server-driven-ui-system-842244c5f5)
 
+### Path children will only render usind the use of outlet
