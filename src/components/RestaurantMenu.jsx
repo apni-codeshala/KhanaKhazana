@@ -17,10 +17,16 @@ const RestaurantMenu = () => {
     const [menu, setMenu] = useState(null);
 
     async function getRestaurantInfo() {
-        const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=" + id)
-        const json = await data.json();
-        setRestaurant(json?.data?.cards[2]?.card?.card?.info);
-        setMenu(json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+        try {
+            const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=" + id)
+            const json = await data.json();
+            setRestaurant(json?.data?.cards[0]?.card?.card?.info);
+            // console.log(json?.data)
+            setMenu(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+            // console.log(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     useEffect(() => {
@@ -46,8 +52,8 @@ const RestaurantMenu = () => {
                     </div>
                     <div className="pb-2 h-30">
                         {
-                            restaurant?.cuisines.map((cuisine) => {
-                                return <Cuisines cuisine={cuisine} />
+                            restaurant?.cuisines.map((cuisine, index) => {
+                                return <Cuisines cuisine={cuisine} key={index}/>
                             })
                         }
                     </div>
@@ -59,8 +65,8 @@ const RestaurantMenu = () => {
             </div>
             
             {
-                menu.map((menu) => {
-                    return <RestaurantMenuCard menu={menu}/>
+                menu.map((menu, index) => {
+                    return <RestaurantMenuCard menu={menu} key={index}/>
                 })
             }
 

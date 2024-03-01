@@ -13,7 +13,6 @@ const RestaurantMenuList = ({item}) => {
             <div className="flex-shrink-0">
                 <img src={CLOUDINARY_URL + item?.card?.info?.imageId} alt="Product image" className="w-56 h-30 object-cover" />
             </div>
-            {console.log(item?.card?.info)}
             <div className="mt-4 ">
                 <h2 className="text-lg font-2xl text-white font-bold">{item?.card?.info?.name}</h2>
                 <p className="mt-2 text-white">{item?.card?.info?.description}</p>

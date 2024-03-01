@@ -10,7 +10,7 @@ const RestaurantMenuCard = ({ menu }) => {
                 <div className="mt-8">
                     {
                         menu?.card?.card?.itemCards?.map((item) => {
-                            return <RestaurantMenuList item={item}/>
+                            return <RestaurantMenuList item={item} key={item?.card?.info?.id}/>
                         })
                     }
                 </div>
