@@ -20,6 +20,7 @@ class Profile extends React.Component {
         }
     }
 
+    // componentDidMount will call after first render
     async componentDidMount() {
         const data = await fetch("https://api.github.com/users/apni-codeshala");
         const json = await data.json();
@@ -27,6 +28,37 @@ class Profile extends React.Component {
             userInfo: json
         })
     }
+
+
+    
+
+    // componentDidMount(){
+    //     this.timer = setInterval(() => {
+    //         console.log("Testing");
+    //     }, 1000);
+    // }
+
+
+
+
+    // componentDidUpdate will run after every update it was like a dependency array in useEffect
+    // componentDidUpdate(prevProps, prevState){
+
+    //     if we want to run something on every update
+    //     if(this.state.userInfo !== prevState.userInfo){
+    //         console.log("Component did update");
+    //     }
+
+    // }
+
+
+
+
+    // Before leaving the page componentWillUnmount will run
+    // componentWillUnmount(){
+    //     console.log("Component will unmount");
+    //     clearInterval(this.timer);
+    // }
 
     render() {
         const { count } = this.state;
