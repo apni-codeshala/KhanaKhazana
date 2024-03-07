@@ -5,35 +5,25 @@ import RatingStar from "./RatingStar.jsx";
 import Cuisines from "./Cuisines.jsx";
 import RestaurantMenuCard from "./RestaurantMenuCard.jsx";
 import MenuHeaderShimmer from "./MenuHeaderShimmer.jsx";
-
 import { CLOUDINARY_URL } from "./constant.js";
+import useRestaurant from "../utils/useRestaurant.js";
 
 const RestaurantMenu = () => {
-
     const params = useParams();
     const { id } = params;
+    const [restaurant, menu] = useRestaurant(id);
 
-    const [restaurant, setRestaurant] = useState(null);
-    const [menu, setMenu] = useState(null);
-
-    async function getRestaurantInfo() {
-        try {
-            const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=" + id)
-            const json = await data.json();
-            setRestaurant(json?.data?.cards[0]?.card?.card?.info);
-            // console.log(json?.data)
-            setMenu(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
-            // console.log(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
-        } catch (error) {
-            console.log(error);
-        }
+    // Check if restaurant data is available
+    if (!restaurant) {
+        return <MenuHeaderShimmer />;
     }
 
-    useEffect(() => {
-        getRestaurantInfo();
-    }, []);
+    // Check if cuisines data is available
+    if (!restaurant.cuisines) {
+        return <div>No cuisines available for this restaurant.</div>;
+    }
 
-    return (!restaurant) ? <MenuHeaderShimmer /> : (
+    return (
         <div className="flex flex-col justify-center align-center" style={{ backgroundColor: '#3d3d3d' }}>
 
             <div className="w-full flex mt-20 py-10 px-28 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style={{ backgroundColor: '#3d3d3d' }}>
@@ -65,13 +55,12 @@ const RestaurantMenu = () => {
             </div>
             
             {
-                menu.map((menu, index) => {
-                    return <RestaurantMenuCard menu={menu} key={index}/>
+                menu.map((menuItem, index) => {
+                    return <RestaurantMenuCard menu={menuItem} key={index}/>
                 })
             }
 
         </div>
-
     )
 }
 
