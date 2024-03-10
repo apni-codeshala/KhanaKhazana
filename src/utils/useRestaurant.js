@@ -1,28 +1,29 @@
 import { useState, useEffect } from "react";
-import { MENU_API } from "../components/constant";
+import { SEARCH_RESTAURANT } from "../components/constant.js";
 
-const useRestaurant = (resId) => {
+const useRestaurant = () => {
 
-    const [restaurant, setRestaurant] = useState([]);
-    const [menu, setMenu] = useState([])
+    const [allRestaurants, setAllRestaurants] = useState([]);
+    const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
-    async function getRestaurantInfo(){
+    async function getRestaurnats() {
         try {
-            const data = await fetch(MENU_API + resId);
+            const data = await fetch(SEARCH_RESTAURANT)
             const json = await data.json();
-            setRestaurant(json?.data?.cards[0]?.card?.card?.info);
-            setMenu(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);    
+            // Optional chaining
+            setAllRestaurants(json?.data?.cards[1]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards[1]?.card?.card?.restaurants);
+            setFilteredRestaurants(json?.data?.cards[1]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards[1]?.card?.card?.restaurants);
         } catch (error) {
             console.log('Error in fetching the restaurants :', error);
         }
     }
 
     useEffect(() => {
-        getRestaurantInfo()
+        // API call
+        getRestaurnats();
     }, []);
 
-    return [restaurant, menu];
-
+    return [allRestaurants, filteredRestaurants, setFilteredRestaurants];
 }
 
 export default useRestaurant;

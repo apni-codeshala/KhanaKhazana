@@ -1,32 +1,15 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import BodyShimmer from "./BodyShimmer.jsx";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper.js";
-import { SEARCH_RESTAURANT } from "./constant.js";
+import useRestaurant from "../utils/useRestaurant.js";
 
 const Body = () => {
-    const [allRestaurants, setAllRestaurants] = useState([]);
-    const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+
+    const [allRestaurants, filteredRestaurants, setFilteredRestaurants] = useRestaurant();
+
     const [searchText, setSearchText] = useState('');
-
-    async function getRestaurnats() {
-        try {
-            const data = await fetch(SEARCH_RESTAURANT)
-            const json = await data.json();
-            // Optional chaining
-            setAllRestaurants(json?.data?.cards[1]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards[1]?.card?.card?.restaurants);
-            setFilteredRestaurants(json?.data?.cards[1]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards[1]?.card?.card?.restaurants);
-        } catch (error) {
-            console.log('Error in fetching the restaurants :', error);
-        }
-    }
-
-    useEffect(() => {
-        // API call
-        getRestaurnats();
-    }, []);
 
     if (!allRestaurants) {
         return null;
