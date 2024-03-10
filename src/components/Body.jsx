@@ -4,13 +4,18 @@ import BodyShimmer from "./BodyShimmer.jsx";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper.js";
 import useRestaurant from "../utils/useRestaurant.js";
+import useOnline from "../utils/useOnline.js";
 
 const Body = () => {
 
     const [allRestaurants, filteredRestaurants, setFilteredRestaurants] = useRestaurant();
+    const online = useOnline();
 
     const [searchText, setSearchText] = useState('');
 
+    if (!online) {
+        return <h1 className="p-10 mt-20">Offline, please check your intenet connection!</h1>
+    }
     if (!allRestaurants) {
         return null;
     }
