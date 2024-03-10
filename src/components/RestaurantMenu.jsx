@@ -13,17 +13,17 @@ const RestaurantMenu = () => {
     const { id } = params;
     const [restaurant, menu] = useRestaurant(id);
 
-    // Check if restaurant data is available
-    if (!restaurant) {
-        return <MenuHeaderShimmer />;
-    }
-
     // Check if cuisines data is available
     if (!restaurant.cuisines) {
         return <div>No cuisines available for this restaurant.</div>;
     }
 
-    return (
+        // // Check if restaurant data is available
+        // if (!restaurant) {
+        //     return <MenuHeaderShimmer />;
+        // }
+
+    return !(restaurant) ? (<MenuHeaderShimmer />):(
         <div className="flex flex-col justify-center align-center" style={{ backgroundColor: '#3d3d3d' }}>
 
             <div className="w-full flex mt-20 py-10 px-28 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style={{ backgroundColor: '#3d3d3d' }}>

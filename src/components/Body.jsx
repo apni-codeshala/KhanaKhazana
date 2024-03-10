@@ -1,8 +1,10 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import BodyShimmer from "./BodyShimmer.jsx";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper.js";
+import { SEARCH_RESTAURANT } from "./constant.js";
 
 const Body = () => {
     const [allRestaurants, setAllRestaurants] = useState([]);
@@ -11,7 +13,7 @@ const Body = () => {
 
     async function getRestaurnats() {
         try {
-            const data = await fetch("https://www.swiggy.com/dapi/restaurants/search/v3?lat=12.9351929&lng=77.62448069999999&str=burger%20king&trackingId=undefined&submitAction=ENTER&queryUniqueId=62c11a14-c68e-2263-02d8-4497c3d25237")
+            const data = await fetch(SEARCH_RESTAURANT)
             const json = await data.json();
             // Optional chaining
             setAllRestaurants(json?.data?.cards[1]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards[1]?.card?.card?.restaurants);
