@@ -36,9 +36,9 @@ const Instamart = () => {
                 title={"About Instamaer"} 
                 description={"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo, pariatur possimus maxime minus dolor numquam eveniet inventore error impedit eum?"}
                 isVisible={sectionConfig.showAbout}
-                setIsVisible = {() => {
+                setIsVisible = {(condition) => {
                     setSectionConfig({
-                        showAbout: true,
+                        showAbout: condition,
                         showTeam: false,
                         showCareer: false
                     })
@@ -48,10 +48,10 @@ const Instamart = () => {
                 title={"Team Instamaer"} 
                 description={"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo, pariatur possimus maxime minus dolor numquam eveniet inventore error impedit eum?"}
                 isVisible={sectionConfig.showTeam}
-                setIsVisible = {() => {
+                setIsVisible = {(condition) => {
                     setSectionConfig({
                         showAbout: false,
-                        showTeam: true,
+                        showTeam: condition,
                         showCareer: false
                     })
                 }}
@@ -60,11 +60,11 @@ const Instamart = () => {
                 title={"Career Instamaer"} 
                 description={"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo, pariatur possimus maxime minus dolor numquam eveniet inventore error impedit eum?"}
                 isVisible={sectionConfig.showCareer}
-                setIsVisible = {() => {
+                setIsVisible = {(condition) => {
                     setSectionConfig({
                         showAbout: false,
                         showTeam: false,
-                        showCareer: true
+                        showCareer: condition
                     })
                 }}
             />
