@@ -10,6 +10,7 @@ import Error from './components/Error.jsx';
 import Services from './components/Services.jsx';
 import RestaurantMenu from './components/RestaurantMenu.jsx';
 import Profile from './components/Profile.jsx';
+import MenuHeaderShimmer from './components/MenuHeaderShimmer.jsx';
 
 import './index.css'
 
@@ -23,7 +24,10 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />
+        element: <Body user={{
+          name: "Abhishek Patel",
+          email: "abhishek@gmail.com"
+        }}/>
       },
       {
         path: "/about",
@@ -50,7 +54,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/instamart",
         element: (
-          <Suspense>
+          <Suspense fallback={<MenuHeaderShimmer />}>
             <Instamart />
           </Suspense>
         )

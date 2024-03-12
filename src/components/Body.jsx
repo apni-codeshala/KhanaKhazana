@@ -6,7 +6,7 @@ import { filterData } from "../utils/helper.js";
 import useRestaurant from "../utils/useRestaurant.js";
 import useOnline from "../utils/useOnline.js";
 
-const Body = () => {
+const Body = ({user}) => {
 
     const [allRestaurants, filteredRestaurants, setFilteredRestaurants] = useRestaurant();
     const online = useOnline();
@@ -64,7 +64,7 @@ const Body = () => {
                                     to = {"/restaurant/" + restaurant.info.id}
                                     key={restaurant.info.id}
                                 >
-                                    <RestaurantCard {...restaurant?.info} />
+                                    <RestaurantCard {...restaurant?.info} user={user}/>
                                 </Link>
                             )
                         })
