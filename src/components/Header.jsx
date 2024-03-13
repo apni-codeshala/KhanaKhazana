@@ -2,7 +2,13 @@ import { NavLink } from 'react-router-dom';
 
 import logo from '../assets/logo.png'
 
+import { useContext } from 'react';
+import UserContext from '../utils/UserContext';
+
 const Header = () => {
+
+    const {user, setUser} = useContext(UserContext);
+
     return (
 
         <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
@@ -39,6 +45,17 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
+                <input 
+                    value={user.name} 
+                    type='text'
+                     
+                    onChange={(e) => {
+                        setUser({
+                            ...user,
+                            name: e.target.value
+                        })
+                    }}
+                />
             </div>
         </nav>
 

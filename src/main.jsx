@@ -24,10 +24,7 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body user={{
-          name: "Abhishek Patel",
-          email: "abhishek@gmail.com"
-        }}/>
+        element: <Body />
       },
       {
         path: "/about",
