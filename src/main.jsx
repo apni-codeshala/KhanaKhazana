@@ -11,6 +11,7 @@ import Services from './components/Services.jsx';
 import RestaurantMenu from './components/RestaurantMenu.jsx';
 import Profile from './components/Profile.jsx';
 import MenuHeaderShimmer from './components/MenuHeaderShimmer.jsx';
+import Cart from './components/Cart.jsx';
 
 import './index.css'
 
@@ -55,6 +56,10 @@ const appRouter = createBrowserRouter([
             <Instamart />
           </Suspense>
         )
+      },
+      {
+        path: "/cart",
+        element: <Cart />
       }
     ]
   },

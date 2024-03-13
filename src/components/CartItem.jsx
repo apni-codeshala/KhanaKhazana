@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addItem } from "../utils/cartSlice.js";
+import { removeItem } from "../utils/cartSlice.js";
 
 import { CLOUDINARY_URL } from "./constant";
 import veg from "../assets/veg.png";
 import nonveg from "../assets/nonveg.png"
 
-const RestaurantMenuList = ({ item }) => {
+const CartItem = ({ item, quantity, index}) => {
 
-    const [qunatity, setQuantity] = useState(1);
+    const [qunatity, setQuantity] = useState(quantity);
 
     const dispatch = useDispatch();
 
-    function addFoodItem(item, quantity) {
-        dispatch(addItem({item, quantity}));
+    function removeFoodItem(item, quantity) {
+        dispatch(removeItem({item, quantity}));
     }
 
     return (
@@ -57,11 +57,11 @@ const RestaurantMenuList = ({ item }) => {
                             }}
                         >+</button>
                         <button 
-                            className="w-[100px] border h-[35px] text-white bg-sky-500 rounded ml-5 py-1 hover:bg-sky-800"
+                            className="w-[140px] border h-[35px] text-white bg-sky-500 rounded ml-5 py-1 hover:bg-sky-800"
                             onClick={() => {
-                                addFoodItem(item, qunatity);
+                                removeFoodItem(item, qunatity);
                             }}
-                        >Add to cart</button>
+                        >Remove from cart</button>
                     </div>
                 </div>
             </div>
@@ -69,4 +69,4 @@ const RestaurantMenuList = ({ item }) => {
     );
 }
 
-export default RestaurantMenuList;
+export default CartItem;
